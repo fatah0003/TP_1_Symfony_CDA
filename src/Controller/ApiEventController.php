@@ -26,7 +26,7 @@ final class ApiEventController extends AbstractController
             'isPublic' => false,
         ],
     ];
-    #[Route('/api/event', name: 'app_api_event', methods: ['GET'])]
+    #[Route('/api/events', name: 'app_api_event', methods: ['GET'])]
     public function index(): Response
     {
         return $this->json($this->events);
@@ -49,7 +49,7 @@ final class ApiEventController extends AbstractController
         return $this->json($this->events[$id-1]);
     }
 
-    #[Route('', name: 'add_event', methods: ['POST'])]
+    #[Route('/api/events', name: 'add_event', methods: ['POST'])]
     public function add(Request $request): JsonResponse{
         $data = json_decode($request -> getContent(), true);
         $data['id'] = rand(100,900);
